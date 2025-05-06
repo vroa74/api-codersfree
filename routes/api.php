@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -7,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::ApiResource('users', UserController::class);
+Route::ApiResource('tasks', TaskController::class);
 
 Route::get('/', function () {
     return 'hola desde el api';

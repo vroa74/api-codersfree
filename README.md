@@ -12,3 +12,6 @@ php artisan install:api
 ### 11. Introducción a Eloquent
 
     php artisan make:controller Api/TaskController --api
+     php artisan make:migration create_tasks_table
+    php artisan make:factory TaskFactory --model=Task
+
