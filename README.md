@@ -88,6 +88,18 @@ este metodo viene por defal con false hay que cambiarlo a true para que corra bi
 
 ### 21. Aplicar paginación
 
+    public function index()
+    {
+    $tasks = Task::query();
+    
+            if (request('perPage')){
+                $tasks = $tasks->paginate(request('perPage'));
+            } else{
+                $tasks = $tasks->get();
+            }
+            return response()->json([$tasks]);
+        }
+
 
 
 
