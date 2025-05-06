@@ -36,7 +36,19 @@ php artisan install:api
  
 ### 16. Actualizar registro
 
+    public function update(Request $request,  $task)     {
+        $task = Task::find($task);
+        $task->update( $request->all());
+        return response()->json($task);
+    }
 
+### 17. Eliminar registro
+
+    public function destroy($task)     {
+        $task = Task::find($task);
+        $task->delete();
+        return response()->json(null, 204);
+    }
 
 
 
