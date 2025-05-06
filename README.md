@@ -30,4 +30,20 @@ php artisan install:api
 
 ###  15. Recuperar registro
 
+    public function show(Task $task)     {
+        return $task; 
+    }
+ 
+### 16. Actualizar registro
+
+
+
+
+
+
+
+
+
+
+
 
