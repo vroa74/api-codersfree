@@ -15,3 +15,13 @@ php artisan install:api
      php artisan make:migration create_tasks_table
     php artisan make:factory TaskFactory --model=Task
 
+### capitulo 13. Listar registros
+ se crea la ruta de tasks
+ se trabaja con index de tasks
+
+### 14. Crear registros
+
+
+
+
+15. Recuperar registro
