@@ -54,6 +54,121 @@ php artisan install:api
 ###  capitulo 18. Model Binding
 
 
+### 19. Validaciones
+
+     public function store(Request $request)
+    {
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string|max:1000',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+
+        $task = Task::create($request->all());
+        return response()->json($task, 201);
+
+
+
+
+### 20. Form Request
+
+    php artisan make:request StoreTaskRequest  
+    php artisan make:request UpdateTaskRequest
+
+este metodo viene por defal con false hay que cambiarlo a true para que corra bien
+
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+
+
+### 21. Aplicar paginación
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
