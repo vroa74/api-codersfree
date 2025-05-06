@@ -21,7 +21,13 @@ php artisan install:api
 
 ### 14. Crear registros
 
+    public function store(Request $request)      {
+        $task = Task::create( $request->all());
+        return response()->json($task, 201);
+    }
 
 
 
-15. Recuperar registro
+###  15. Recuperar registro
+
+

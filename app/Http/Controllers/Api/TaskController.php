@@ -20,8 +20,7 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request)      {
         $task = Task::create( $request->all());
         return response()->json($task, 201);
     }
@@ -29,9 +28,10 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Task $task)
     {
-        //
+        return $task;
+
     }
 
     /**
