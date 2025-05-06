@@ -51,6 +51,8 @@ php artisan install:api
     }
 
 
+###  capitulo 18. Model Binding
+
 
 
 
