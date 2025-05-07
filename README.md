@@ -100,6 +100,8 @@ este metodo viene por defal con false hay que cambiarlo a true para que corra bi
             return response()->json([$tasks]);
         }
 
+### 22. Aplicar filtros
+
 
 
 
