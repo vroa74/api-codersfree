@@ -54,7 +54,7 @@ php artisan install:api
 ###  capitulo 18. Model Binding
 
 
-### 19. Validaciones
+### Capitulo 19. Validaciones
 
      public function store(Request $request)
     {
@@ -72,7 +72,7 @@ php artisan install:api
 
 
 
-### 20. Form Request
+###  Capitulo 20. Form Request
 
     php artisan make:request StoreTaskRequest  
     php artisan make:request UpdateTaskRequest
@@ -86,7 +86,7 @@ este metodo viene por defal con false hay que cambiarlo a true para que corra bi
 
 
 
-### 21. Aplicar paginación
+### Capitulo 21. Aplicar paginación
 
     public function index()
     {
@@ -100,23 +100,55 @@ este metodo viene por defal con false hay que cambiarlo a true para que corra bi
             return response()->json([$tasks]);
         }
 
-### 22. Aplicar filtros
+###  Capitulo 22. Aplicar filtros
+
+        if (request('filters')) {
+            $filters = request('filters');
+            foreach ($filters as $field => $conditions) {
+                foreach ($conditions as $operator => $value) {
+                    if (in_array($operator, ['=', '!=', '>', '<', '>=', '<='])) {
+                        $tasks->where($field, $operator, $value); // Aplicar cada filtro
+                    }
+                    if (in_array($operator, ['like', 'not like'])) {
+                        $tasks->where($field, $operator, '%' . $value . '%'); // Aplicar cada filtro
+                    }
+                }
+            }
+        }
 
 
+###  Capitulo 23. Aplicar selects
 
 
+        if (request('select')) {
+            $select = request('select');
+            $select = str_replace(' ', '', $select); // Eliminar espacios en blanco            
+            $selectArray = explode(',', $select); //separa todos los elemento sepárados por comas            
+            $tasks->select($selectArray); // Aplicar selección de campos
+        }
 
+### 24. Ordenar registros
 
+if (request('sort')) {
+$sortFields = explode(',', request('sort'));    
+foreach ($sortFields as $sortField){
+$direction = 'asc'; // Valor por defecto
+$sortField = str_replace(' ', '', $sortField); // Eliminar espacios en blanco                
+if (substr($sortField, 0,1) === '-') {
+$direction = 'desc'; // Cambiar a descendente si el primer carácter es '-'
+$sortField =(substr($sortField , 1)); // Eliminar el primer carácter '-'
+}
+$tasks->orderBy($sortField, $direction); // Ordenar por el campo y la dirección
+}
+} // fin de sort
 
+25. Incluir relaciones
 
-
-
-
-
-
-
-
-
+        if (request('include')) {
+            $include = str_replace(' ', '', request('include')); // Eliminar espacios en blanco
+            $includesArray = explode(',', $include); // Separar por comas
+            $tasks = $tasks->with($includesArray); // Aplicar relaciones
+        }
 
 
 
