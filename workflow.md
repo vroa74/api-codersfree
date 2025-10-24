@@ -58,7 +58,18 @@ Capitulo 13
 
 
 
-Capitulo  
+Capitulo  14
+  14. Crear registros
+  para en viar la informacion desde postman o insomnia a api se usa form-data
+  y en el cuerpo del form data se ponen todas la variable para que el campo pueda ser guardado
+  y el controlador  se escribe:
+
+          $task = task::create($request->all());
+        return response()->json($task, 201);
+
+        el estado 201 significa que el estado se a realizado con exito.
+        
+
 
 
 Capitulo  
