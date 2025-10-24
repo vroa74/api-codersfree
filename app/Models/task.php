@@ -17,6 +17,9 @@ class task extends Model
         'user_id'
     ];
 
+    
+    protected $with = ['user'];  // Cargar siempre la relación user automáticamente
+
     public function user()     {
 
         return $this->belongsTo(User::class);

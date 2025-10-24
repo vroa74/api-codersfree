@@ -68,14 +68,41 @@ Capitulo  14
         return response()->json($task, 201);
 
         el estado 201 significa que el estado se a realizado con exito.
-        
 
 
 
-Capitulo  
 
+Capitulo  15
+  15. Recuperar registro
 
-Capitulo  
+  en postman en el encabezado se escribe :
+
+  http://api-codersfree.ask.me/api/task/1526?include=user
+
+  en params 
+  
+  include           user
+
+  para que la informacion del usuario se refleje se necesita que en el modelo task se agregue la linea : 
+  
+  protected $with = ['user'];  // Cargar siempre la relación user automáticamente
+  esto va despues del los datos : 
+
+    protected $fillable = [
+        'title',
+        'body',
+        'earring',
+        'user_id'
+    ];
+
+    
+    protected $with = ['user'];  // Cargar siempre la relación user automáticamente
+
+Capitulo  16
+
+    16. Actualizar registro
+
+    
 
 
 Capitulo  

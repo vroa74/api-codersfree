@@ -17,7 +17,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = task::query();
-        $tasks->orderBy('id', 'desc');
+        // $tasks->orderBy('id', 'desc');  // para ordenar los registros por id de forma descendente
 
         //=====================================================
         // filter
@@ -80,13 +80,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-
-//    las validaciones vienen el StoreTaskRequest
-
-    
+//    las validaciones vienen el StoreTaskRequest    
         $task = task::create($request->all());
         return response()->json($task, 201);
-
     }
 
     /**
