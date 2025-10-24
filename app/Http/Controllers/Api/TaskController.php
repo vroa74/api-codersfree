@@ -15,7 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::query();
+        $tasks = task::query();
 
         //=====================================================
         // filter
@@ -80,14 +80,14 @@ class TaskController extends Controller
 
 //    las validaciones vienen el StoreTaskRequest
 
-        $task = Task::create($request->all());
+        $task = task::create($request->all());
         return response()->json($task, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+    public function show(task $task)
     {
         return response()->json($task);
 
@@ -96,7 +96,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request, task $task)
     {
         $task->update( $request->all());
         return response()->json($task);
@@ -105,7 +105,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(  Task $task)
+    public function destroy(task $task)
     {
         $task->delete();
         return response()->json(null, 204);

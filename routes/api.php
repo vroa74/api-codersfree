@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::ApiResource('users', UserController::class);
-Route::ApiResource('tasks', TaskController::class);
+Route::ApiResource('task', TaskController::class);
+Route::ApiResource('Task', TaskController::class); // Ruta alternativa singular
 Route::ApiResource('simple', \App\Http\Controllers\Api\APISimpleController::class);
 
 // Ruta protegida para obtener el usuario autenticado

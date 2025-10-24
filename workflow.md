@@ -30,7 +30,7 @@ Capitulo 11
   11. Introducción a Eloquent
   php artisan make:migration create_tasks_table
   php artisan make:model task
-  php artisan make:controllers Api\taskController --api
+  
 
 
 Capitulo  12
@@ -50,7 +50,12 @@ Capitulo  12
 
 
 
-Capitulo  
+Capitulo 13 
+
+  13. Listar registros
+
+  php artisan make:controllers Api\taskController --api
+
 
 
 Capitulo  
