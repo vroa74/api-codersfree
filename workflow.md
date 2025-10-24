@@ -33,7 +33,21 @@ Capitulo 11
   php artisan make:controllers Api\taskController --api
 
 
-Capitulo  
+Capitulo  12
+  12. Insertar registros de prueba
+
+  uso de factory
+
+  php artisan make:factory TaskFactory
+
+          return [
+            'title' => $this->faker->sentence(6, true),
+            'body' => $this->faker->optional()->paragraph(3),
+            'earring' => $this->faker->boolean(70),
+            'user_id' => \App\Models\User::inRandomOrder()->first()->id,
+        ];
+
+
 
 
 Capitulo  
