@@ -12,7 +12,10 @@ class APISimpleController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'MSG' => 'Hola desde el API simple index - listado de recursos',
+            'data' => []
+        ]);
     }
 
     /**
@@ -20,7 +23,10 @@ class APISimpleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json([
+            'MSG' => 'Hola desde el API simple store',
+            'data' => $request->all()
+        ]);
     }
 
     /**
@@ -28,7 +34,10 @@ class APISimpleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json([
+            'MSG' => 'Hola desde el API simple show',
+            'id' => $id
+        ]);
     }
 
     /**
@@ -36,7 +45,11 @@ class APISimpleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return response()->json([
+            'MSG' => 'Hola desde el API simple update',
+            'id' => $id,
+            'data' => $request->all()
+        ]);
     }
 
     /**
@@ -44,6 +57,9 @@ class APISimpleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return response()->json([
+            'MSG' => 'Hola desde el API simple destroy',
+            'id' => $id
+        ]);
     }
 }

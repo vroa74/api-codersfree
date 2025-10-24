@@ -41,7 +41,6 @@ class TaskController extends Controller
             $selectArray = explode(',', $select); //separa todos los elemento sepárados por comas
             $tasks->select($selectArray); // Aplicar selección de campos
         }
-
         //=====================================================
         //sort
         if (request('sort')) {
@@ -80,8 +79,6 @@ class TaskController extends Controller
     {
 
 //    las validaciones vienen el StoreTaskRequest
-
-
 
         $task = Task::create($request->all());
         return response()->json($task, 201);

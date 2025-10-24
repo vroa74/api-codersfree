@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        // Call UserSeeder to insert all users
+        // $this->call(UserSeeder::class);
+
         Task::factory(1523)->create();
 
 //         User::factory()->create([
