@@ -16,17 +16,21 @@ Capitulo 8
 Capitulo 9 
 9. Introducción a los controladores
 
-php artisan make:controllers ApiUserController --api
+php artisan make:controllers Api\UserController --api
 
 Capitulo 10 
   10. Rutas ApiResource
   
   php artisan r:l
   Route::ApiResource('users', UserController::class);
-  
 
 
-Capitulo  
+
+Capitulo 11 
+  11. Introducción a Eloquent
+  php artisan make:migration create_tasks_table
+  php artisan make:model task
+  php artisan make:controllers Api\taskController --api
 
 
 Capitulo  

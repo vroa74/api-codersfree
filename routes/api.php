@@ -22,18 +22,18 @@ Route::get('/', function () {
 });
 
 // Rutas genéricas con parámetro ID (se evalúan después de las rutas específicas)
-Route::post('/{id}', function () {
-    return 'hola desde el api POST '. request()->id;
-});
-Route::get('/{id}', function () {
-    return 'hola desde el api show ' . request()->id;
-});
-Route::put('/{id}', function () {
-    return 'hola desde el api put ' . request()->id;
-});
-Route::patch('/{id}', function () {
-    return 'hola desde el api patch ' . request()->id;
-});
-Route::delete('/{id}', function () {
-    return 'hola desde el api delete ' . request()->id;
-});
+// Route::post('/{id}', function () {
+//     return 'hola desde el api POST '. request()->id;
+// });
+// Route::get('/{id}', function () {
+//     return 'hola desde el api show ' . request()->id;
+// });
+// Route::put('/{id}', function () {
+//     return 'hola desde el api put ' . request()->id;
+// });
+// Route::patch('/{id}', function () {
+//     return 'hola desde el api patch ' . request()->id;
+// });
+// Route::delete('/{id}', function () {
+//     return 'hola desde el api delete ' . request()->id;
+// });
