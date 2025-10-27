@@ -17,6 +17,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = task::query();
+        $tasks->orderBy('id', 'desc');
         // $tasks->orderBy('id', 'desc');  // para ordenar los registros por id de forma descendente
 
         //=====================================================
@@ -109,8 +110,10 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(task $task)
+    public function destroy( $task)  // se puede usar el model binding o el id del registro
     {
+        
+        $task = task::find($task);
         $task->delete();
         return response()->json(null, 204);
     }

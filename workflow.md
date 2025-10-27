@@ -123,6 +123,11 @@ Capitulo  16   http://api-codersfree.ask.me/api/task
 Capitulo  17
 17. Eliminar registro
 
+        $task = task::find($task);
+        $task->delete();
+        return response()->json(null, 204);
+
+
 
 Capitulo  
 
