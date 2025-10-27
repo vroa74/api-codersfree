@@ -195,6 +195,24 @@ App\http\Request
 Capitulo  021
 21. Aplicar paginación
 
+para retornar paginado hay que hacer esto:
+
+http://api-codersfree.ask.me/api/task?perPage=10
+
+      nota el nombre de la variable que se pone en el parametro es la misma que se recibe en 
+      return request('perPage');
+
+la paginacion queda :
+      $tasks = task::query();
+        
+        //1-.primera trabajo con el listado de registros
+        if (request('perPage')){
+            $tasks = $tasks->paginate(request('perPage'));
+        } else{
+            $tasks = $tasks->get();
+        }
+        return response()->json($tasks);
+
 
 
 
@@ -202,7 +220,9 @@ Capitulo  021
 http://api-codersfree.ask.me/api/task
 
 
-Capitulo  
+Capitulo  022
+    22. Aplicar filtros
+    
 
 
 Capitulo  
