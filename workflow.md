@@ -1,3 +1,6 @@
+http://api-codersfree.ask.me/api/task
+
+
 Capitulo 6 
 
 Capitulo 7 
@@ -98,11 +101,27 @@ Capitulo  15
     
     protected $with = ['user'];  // Cargar siempre la relación user automáticamente
 
-Capitulo  16
+Capitulo  16   http://api-codersfree.ask.me/api/task
 
     16. Actualizar registro
+      para actualizar el valor de un campo dentro del registro el valor se encia por el cuerpo (Body) dentro de de este tipo usaremos x-www-www-form ya que no acepta form-data
 
-    
+
+    $task = task::find($task);
+        $task->update($request->all());
+        return $task;
+
+      para poder usar el form-data para actualizar registro es necesario poner dentro de los de los valores una lilea la cual es  
+
+      _method     PUT
+
+    x-www-www-form  no puede anviar variable de textos y archvios por eso mismo es necesario usar form-data
+
+
+
+
+Capitulo  17
+17. Eliminar registro
 
 
 Capitulo  
@@ -114,10 +133,7 @@ Capitulo
 Capitulo  
 
 
-Capitulo  
-
-
-Capitulo  
+Capitulo  http://api-codersfree.ask.me/api/task
 
 
 Capitulo  
