@@ -89,7 +89,7 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(task $task)
+    public function show(task $task) //esta implementado el
     {
         return response()->json($task);
 

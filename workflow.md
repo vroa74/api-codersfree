@@ -129,7 +129,34 @@ Capitulo  17
 
 
 
-Capitulo  
+Capitulo  018
+
+18. Model Binding
+
+ que es el  Model Binding en laravel
+
+ El Model Binding (o enlace de modelo) es una característica de Laravel que convierte automáticamente un parámetro de ruta en una instancia del modelo correspondiente.
+
+
+    sin Model Binding
+
+public function show( $task) //esta implementado el model binding
+    {
+        $task = task::find($task);
+        return response()->json($task);
+
+    }
+
+    con Model Binding
+
+    public function show(task $task) //esta implementado el model binding
+    {
+        return response()->json($task);
+
+    }
+
+
+
 
 
 Capitulo  
