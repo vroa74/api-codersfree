@@ -163,12 +163,43 @@ Capitulo  019
 
 19. Validaciones
 
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string|max:1000',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $task = task::create($request->all());
+        return response()->json($task, 201);
 
 
-Capitulo  
 
 
-Capitulo  http://api-codersfree.ask.me/api/task
+Capitulo  020
+20. Form Request
+
+php artisan make:request StoreTaskRequest
+
+App\http\Request
+
+ public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'body' => 'required|string|max:1000',
+            'user_id' => 'required|exists:users,id',
+        ];
+    }
+
+
+Capitulo  021
+21. Aplicar paginación
+
+
+
+
+
+http://api-codersfree.ask.me/api/task
 
 
 Capitulo  

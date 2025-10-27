@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\task;
@@ -79,16 +79,11 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request)
     {
 //    las validaciones vienen el StoreTaskRequest  
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'body' => 'required|string|max:1000',
-            'user_id' => 'required|exists:users,id',
-        ]);
 
-        $task = task::create($request->all());
+        $task = task::create($request->validated());
         return response()->json($task, 201);
     }
 
@@ -104,11 +99,11 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $task)
+    public function update(UpdateTaskRequest $request,  $task)
     {
 
         $task = task::find($task);
-        $task->update($request->all());
+        $task->update($request->validated());
         return $task;
 
     }
