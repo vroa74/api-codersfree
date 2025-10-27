@@ -159,7 +159,10 @@ public function show( $task) //esta implementado el model binding
 
 
 
-Capitulo  
+Capitulo  019
+
+19. Validaciones
+
 
 
 Capitulo  

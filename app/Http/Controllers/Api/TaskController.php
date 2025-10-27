@@ -81,7 +81,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-//    las validaciones vienen el StoreTaskRequest    
+//    las validaciones vienen el StoreTaskRequest  
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string|max:1000',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
         $task = task::create($request->all());
         return response()->json($task, 201);
     }
