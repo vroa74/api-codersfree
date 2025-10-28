@@ -49,11 +49,17 @@ class TaskController extends Controller
 
         /* 4-. trabajo con los sort */
         if (request('sort')) {
-            $sort = request('sort');
-            $sort = str_replace(' ', '', $sort); // Eliminar espacios en blanco            
-            $sortArray = explode(',', $sort); //separa todos los elemento sepárados por comas            
-            $tasks->orderBy($sortArray); // Aplicar ordenación de campos
-        }
+            $sortFields = explode(',', request('sort'));
+            foreach ($sortFields as $sortField){
+                $direction = 'asc'; // Valor por defecto
+                $sortField = str_replace(' ', '', $sortField); // Eliminar espacios en blanco
+                if (substr($sortField, 0,1) === '-') {
+                    $direction = 'desc'; // Cambiar a descendente si el primer carácter es '-'
+                    $sortField =(substr($sortField , 1)); // Eliminar el primer carácter '-'
+                }
+                $tasks->orderBy($sortField, $direction); // Ordenar por el campo y la dirección
+            }
+        } // fin de sort
 
 
 
