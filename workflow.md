@@ -242,7 +242,18 @@ Capitulo  022
 
 
 
-Capitulo  
+Capitulo  023
+
+    23. Aplicar selects
+        /* 3-. trabajo con los selects */
+        if (request('select')) {
+            $select = request('select');
+            $select = str_replace(' ', '', $select); // Eliminar espacios en blanco            
+            $selectArray = explode(',', $select); //separa todos los elemento sepárados por comas            
+            $tasks->select($selectArray); // Aplicar selección de campos
+        }
+
+
 
 
 Capitulo  

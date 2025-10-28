@@ -17,7 +17,7 @@ class TaskController extends Controller
     public function index()
     {
         
-        //  return request('filters');
+         return request(['filters','select','sort']);
 
         $tasks = task::query();
 
@@ -37,6 +37,23 @@ class TaskController extends Controller
                 } //foreach ($conditions as $operator => $value) 
             }  //foreach ($filters as $field => $conditions) {
         }   //if (request('filters')) {
+
+
+        /* 3-. trabajo con los selects */
+        if (request('select')) {
+            $select = request('select');
+            $select = str_replace(' ', '', $select); // Eliminar espacios en blanco            
+            $selectArray = explode(',', $select); //separa todos los elemento sepárados por comas            
+            $tasks->select($selectArray); // Aplicar selección de campos
+        }
+
+        /* 4-. trabajo con los sort */
+        if (request('sort')) {
+            $sort = request('sort');
+            $sort = str_replace(' ', '', $sort); // Eliminar espacios en blanco            
+            $sortArray = explode(',', $sort); //separa todos los elemento sepárados por comas            
+            $tasks->orderBy($sortArray); // Aplicar ordenación de campos
+        }
 
 
 
