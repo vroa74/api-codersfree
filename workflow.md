@@ -260,10 +260,34 @@ Capitulo  024
 
 24. Ordenar registros
 
+  /* 4-. trabajo con los sort */
+        if (request('sort')) {
+            $sortFields = explode(',', request('sort'));
+            foreach ($sortFields as $sortField){
+                $direction = 'asc'; // Valor por defecto
+                $sortField = str_replace(' ', '', $sortField); // Eliminar espacios en blanco
+                if (substr($sortField, 0,1) === '-') {
+                    $direction = 'desc'; // Cambiar a descendente si el primer carácter es '-'
+                    $sortField =(substr($sortField , 1)); // Eliminar el primer carácter '-'
+                }
+                $tasks->orderBy($sortField, $direction); // Ordenar por el campo y la dirección
+            }
+        } // fin de sort
 
 
+Capitulo  025
 
-Capitulo  
+25. Incluir relaciones
+
+se incluyen en los modal's la relaciones que requiera y despues se implementa la operacion
+
+  /* 5-. trabajo con las relaciones */
+        if (request('include')) {
+            $include = str_replace(' ', '', request('include')); // Eliminar espacios en blanco
+            $includesArray = explode(',', $include); // Separar por comas
+            $tasks = $tasks->with($includesArray); // Aplicar relaciones
+        }
+
 
 
 Capitulo  

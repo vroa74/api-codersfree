@@ -18,14 +18,12 @@ class task extends Model
     ];
 
     
-    protected $with = ['user'];  // Cargar siempre la relación user automáticamente
+    // protected $with = ['user'];  // Cargar siempre la relación user automáticamente
 
     public function user()     {
 
         return $this->belongsTo(User::class);
 
     }
-
-
 
 }

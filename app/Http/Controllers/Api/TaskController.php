@@ -17,9 +17,10 @@ class TaskController extends Controller
     public function index()
     {
         
-         return request(['filters','select','sort']);
+        //  return request(['filters','select','sort']);
 
         $tasks = task::query();
+        // $tasks->with('user');
 
         //2-. trabajo con los filtros */
         if (request('filters')) {
@@ -61,10 +62,13 @@ class TaskController extends Controller
             }
         } // fin de sort
 
+        /* 5-. trabajo con las relaciones */
+        if (request('include')) {
+            $include = str_replace(' ', '', request('include')); // Eliminar espacios en blanco
+            $includesArray = explode(',', $include); // Separar por comas
+            $tasks = $tasks->with($includesArray); // Aplicar relaciones
+        }
 
-
-
-        
         //1-.primera trabajo con el listado de registros
         if (request('perPage')){
             $tasks = $tasks->paginate(request('perPage'));

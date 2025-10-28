@@ -73,4 +73,10 @@ class User extends Authenticatable
             'status' => 'boolean',
         ];
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(task::class);
+    }
+
 }
