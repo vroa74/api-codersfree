@@ -17,8 +17,30 @@ class TaskController extends Controller
     public function index()
     {
         
-        
+        //  return request('filters');
+
         $tasks = task::query();
+
+        //2-. trabajo con los filtros */
+        if (request('filters')) {
+            $filters = request('filters');
+            foreach ($filters as $field => $conditions) {
+                foreach ($conditions as $operator => $value) {
+                    
+                    if (in_array($operator, ['=', '!=', '>', '<', '>=', '<='])) {
+                        $tasks->where($field, $operator, $value); // Aplicar cada filtro
+                    }
+                    if (in_array($operator, ['like', 'not like'])) {
+                        $tasks->where($field, $operator, '%' . $value . '%'); // Aplicar cada filtro                        
+                    }
+
+                } //foreach ($conditions as $operator => $value) 
+            }  //foreach ($filters as $field => $conditions) {
+        }   //if (request('filters')) {
+
+
+
+
         
         //1-.primera trabajo con el listado de registros
         if (request('perPage')){
