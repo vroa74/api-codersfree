@@ -7,6 +7,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\task;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+
+//  Scopes globales
+use App\Models\Scopes\FilterScope;
+use App\Models\Scopes\IncludeScope;
+use App\Models\Scopes\SelectScope;
+use App\Models\Scopes\SortScope;
+
+#[ ScopedBy([
+    FilterScope::class,
+    SelectScope::class,
+    SortScope::class,
+    IncludeScope::class
+])]
 
 
 class TaskController extends Controller
@@ -23,51 +37,15 @@ class TaskController extends Controller
         // $tasks->with('user');
 
         //2-. trabajo con los filtros */
-        if (request('filters')) {
-            $filters = request('filters');
-            foreach ($filters as $field => $conditions) {
-                foreach ($conditions as $operator => $value) {
-                    
-                    if (in_array($operator, ['=', '!=', '>', '<', '>=', '<='])) {
-                        $tasks->where($field, $operator, $value); // Aplicar cada filtro
-                    }
-                    if (in_array($operator, ['like', 'not like'])) {
-                        $tasks->where($field, $operator, '%' . $value . '%'); // Aplicar cada filtro                        
-                    }
-
-                } //foreach ($conditions as $operator => $value) 
-            }  //foreach ($filters as $field => $conditions) {
-        }   //if (request('filters')) {
-
+       
 
         /* 3-. trabajo con los selects */
-        if (request('select')) {
-            $select = request('select');
-            $select = str_replace(' ', '', $select); // Eliminar espacios en blanco            
-            $selectArray = explode(',', $select); //separa todos los elemento sepárados por comas            
-            $tasks->select($selectArray); // Aplicar selección de campos
-        }
+     
 
         /* 4-. trabajo con los sort */
-        if (request('sort')) {
-            $sortFields = explode(',', request('sort'));
-            foreach ($sortFields as $sortField){
-                $direction = 'asc'; // Valor por defecto
-                $sortField = str_replace(' ', '', $sortField); // Eliminar espacios en blanco
-                if (substr($sortField, 0,1) === '-') {
-                    $direction = 'desc'; // Cambiar a descendente si el primer carácter es '-'
-                    $sortField =(substr($sortField , 1)); // Eliminar el primer carácter '-'
-                }
-                $tasks->orderBy($sortField, $direction); // Ordenar por el campo y la dirección
-            }
-        } // fin de sort
+       
 
         /* 5-. trabajo con las relaciones */
-        if (request('include')) {
-            $include = str_replace(' ', '', request('include')); // Eliminar espacios en blanco
-            $includesArray = explode(',', $include); // Separar por comas
-            $tasks = $tasks->with($includesArray); // Aplicar relaciones
-        }
 
         //1-.primera trabajo con el listado de registros
         if (request('perPage')){

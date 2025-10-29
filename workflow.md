@@ -290,7 +290,13 @@ se incluyen en los modal's la relaciones que requiera y despues se implementa la
 
 
 
-Capitulo  
+Capitulo  026
+26. Query Scope globales
+
+    php artisan make:scope FilterScope
+    php artisan make:scope SelectScope
+    php artisan make:scope SortScope
+    php artisan make:scope IncludeScope
 
 
 Capitulo  
