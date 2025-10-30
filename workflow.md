@@ -298,11 +298,53 @@ Capitulo  026
     php artisan make:scope SortScope
     php artisan make:scope IncludeScope
 
+    
+//  Scopes globales
+use App\Models\Scopes\FilterScope;
+use App\Models\Scopes\IncludeScope;
+use App\Models\Scopes\SelectScope;
+use App\Models\Scopes\SortScope;
 
-Capitulo  
+#[ ScopedBy([
+    FilterScope::class,
+    SelectScope::class,
+    SortScope::class,
+    IncludeScope::class
+])]
 
 
-Capitulo  
+
+
+
+
+Capitulo  027
+   27. Query Scope Locales
+
+   para la creacion de los scope locales esto se hace en el modal  que se esta trabajando en este caso el modal task
+
+
+      public function scopeGetOrPaginage( $query){
+    
+        if (request('perPage')){
+            return $query->paginate(request('perPage'));
+        } 
+
+        return $query->get();
+    }
+
+para llamarlo en el controlado se hacer asi:
+
+
+
+
+
+Capitulo  028
+28. Modelo Base Api
+
+Para poder llevar todos los scope a la practica en cualquier modelo generado lo que necesotamos es crear un nuevo modal que sea la base para ellos haremos:
+
+
+php artisan make:modal Api
 
 
 Capitulo  

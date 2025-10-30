@@ -7,20 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\task;
-use Illuminate\Database\Eloquent\Attributes\ScopedBy;
-
-//  Scopes globales
-use App\Models\Scopes\FilterScope;
-use App\Models\Scopes\IncludeScope;
-use App\Models\Scopes\SelectScope;
-use App\Models\Scopes\SortScope;
-
-#[ ScopedBy([
-    FilterScope::class,
-    SelectScope::class,
-    SortScope::class,
-    IncludeScope::class
-])]
+// Los scopes ahora se aplican globalmente desde el modelo base Api
 
 
 class TaskController extends Controller
@@ -30,30 +17,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        
         //  return request(['filters','select','sort']);
-
-        $tasks = task::query();
-        // $tasks->with('user');
-
-        //2-. trabajo con los filtros */
-       
-
-        /* 3-. trabajo con los selects */
-     
-
-        /* 4-. trabajo con los sort */
-       
-
-        /* 5-. trabajo con las relaciones */
-
-        //1-.primera trabajo con el listado de registros
-        if (request('perPage')){
-            $tasks = $tasks->paginate(request('perPage'));
-        } else{
-            $tasks = $tasks->get();
-        }
-
+        $tasks = task::query()->getOrPaginate();
         return response()->json($tasks);
     }
 
