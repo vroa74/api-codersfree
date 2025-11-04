@@ -347,16 +347,57 @@ Para poder llevar todos los scope a la practica en cualquier modelo generado lo 
 php artisan make:modal Api
 
 
-Capitulo  
+Capitulo  029
+
+29. Instalar Laravel JWT
+
+https://codersfree.com/posts/guia-paso-a-paso-implementacion-de-autenticacion-jwt-en-laravel-y-lumen
 
 
-Capitulo  
+composer require tymon/jwt-auth
+
+Publicar la Configuración:
+Para personalizar la configuración del paquete JWT-Auth, puedes publicar el archivo de configuración. Ejecuta el siguiente comando para publicar el archivo de configuración:
+
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+Generar una Clave Secreta:
+Una clave secreta es esencial para la firma de tokens. Puedes crear una fácilmente utilizando la herramienta de línea de comandos Artisan de Laravel. Ejecuta el siguiente comando:
+
+php artisan jwt:secret
+
+se tiene que modificar el modal user
 
 
-Capitulo  
+Configurar el Guardia de Autenticación
+Dentro del archivo config/auth.php, necesitas realizar algunos cambios para configurar Laravel para usar el guardia jwt en la autenticación de tu aplicación.
+
+Realiza los siguientes cambios en el archivo:
+
+'defaults' => [
+    'guard' => 'api',
+    'passwords' => 'users',
+],
+
+...
+
+'guards' => [
+    'api' => [
+        'driver' => 'jwt',
+        'provider' => 'users',
+    ],
+],
+Aquí le decimos al guardia 'api' que use el controlador 'jwt', y establecemos el guardia 'api' como el predeterminado.
+
+pa make:controller Api\AuthController
+
+Capitulo  030
 
 
-Capitulo  
+Capitulo  031
+
+
+Capitulo  032
 
 
 Capitulo  
