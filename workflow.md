@@ -411,6 +411,11 @@ Route::get('prueba', function () {
 
 
 Capitulo  031
+31. Agregar la funcionalidad de registrar usuarios
+    generar una nueva ruta
+    Route::post('auth/register', [AuthController::class, 'register']);
+    
+
 
 
 Capitulo  032
