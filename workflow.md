@@ -392,6 +392,22 @@ Aquí le decimos al guardia 'api' que use el controlador 'jwt', y establecemos e
 pa make:controller Api\AuthController
 
 Capitulo  030
+30. Como funciona la autenticación
+ se hico la pruebas con la ruta de autentificacion que ya se tenia en postman
+    
+    http://api-codersfree.ask.me/api/auth/login
+    en body se puso el email y el password para que de el token
+
+    http://api-codersfree.ask.me/api/prueba
+
+
+se agrego esta ruta
+// Ruta de prueba en la raíz del API
+Route::get('prueba', function () {
+    return auth('api')->user();
+});
+
+
 
 
 Capitulo  031

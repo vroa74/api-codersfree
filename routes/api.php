@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+// Importación de controladores API
 
 
 
@@ -19,15 +20,17 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Ruta de prueba en la raíz del API
-Route::get('/', function () {
-    return 'hola desde el api';
-});
 
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::post('auth/logout', [AuthController::class, 'logout']);
 Route::post('auth/refresh', [AuthController::class, 'refresh']);
 Route::post('auth/me', [AuthController::class, 'me']);
+
+
+// Ruta de prueba en la raíz del API
+Route::get('prueba', function () {
+    return auth('api')->user();
+});
 
 // Rutas genéricas con parámetro ID (se evalúan después de las rutas específicas)
 // Route::post('/{id}', function () {
